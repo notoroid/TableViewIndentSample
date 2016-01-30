@@ -81,13 +81,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        
-        if cell.isKindOfClass(CustomCell) {
-            let customCell:CustomCell = cell as! CustomCell;
+
+        if let customCell:CustomCell = cell as? CustomCell {
             customCell.customLabel.text = "\(indexPath.row)番目"
         }else{
             cell.textLabel?.text = "\(indexPath.row)番目"
         }
+        
         return cell;
     }
     
@@ -103,10 +103,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         layoutMargins.left = indentationWidth;
         cell.layoutMargins = layoutMargins;
         
-        if cell.isKindOfClass(CustomCell) {
-            let customCell:CustomCell = cell as! CustomCell;
+        if let customCell:CustomCell = cell as? CustomCell {
             customCell.leadingConstraint.constant = indentationWidth;
         }
+        
     }
     
 }
